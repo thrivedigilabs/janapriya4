@@ -19,7 +19,7 @@ export function LeadershipMessages() {
             <div className="flex items-center gap-4 mb-6">
               <div className="relative">
                 <img
-                  src={chairman}
+                  src="./Chairman.jpeg"
                   alt="Dr Abdul Basheer VK"
                   className="w-20 h-20 rounded-full object-cover object-[center_20%] border-3 border-accent shadow-glow transition-transform duration-300 group-hover:scale-105"
                 />
