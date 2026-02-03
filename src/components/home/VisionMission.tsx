@@ -1,4 +1,4 @@
-import chairman from '@/assets/chairman.png';
+import chairman from '@/assets/Chairman.jpeg';
 
 export function VisionMission() {
   return (
@@ -45,7 +45,7 @@ export function VisionMission() {
               <img
                 src={chairman}
                 alt="Chairman of Janapriya Group of Institutions"
-                className="w-full h-[400px] md:h-[480px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-[400px] md:h-[480px] object-cover object-centre transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 right-0 gradient-primary p-6">
                 <p className="text-primary-foreground font-semibold text-lg">Dr Abdul Basheer VK</p>
