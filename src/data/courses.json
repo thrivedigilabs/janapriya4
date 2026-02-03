@@ -1,0 +1,504 @@
+{
+  "bsc-nursing": {
+    "id": "bsc-nursing",
+    "title": "B.Sc Nursing – Detailed Information",
+    "subtitle": "Expand the sections below to learn more about our flagship nursing program.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Science in Nursing – 8 Semester Course",
+        "description": "The B.Sc. Nursing degree program is a four-year fulltime program comprising eight semesters, which prepares a student to become a registered nurse qualified to practice in a variety of healthcare settings.",
+        "duration": "4 Years (8 Semesters) + 6 Months Internship",
+        "system": "Choice Based Credit System (CBCS) & Semester System, Competency Based Curriculum",
+        "eligibility": "10+2 (PCB) with minimum 45% marks, English mandatory",
+        "activities": "Seminars, Workshops, Conferences, Guest Lectures, Projects, Clinical Presentations, Health Education",
+         "location": "Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus (8 Semesters)",
+        "semesters": [
+          {
+            "label": "Semester I",
+            "subjects": [
+              "Communicative English",
+              "Applied Anatomy",
+              "Applied Physiology",
+              "Applied Sociology",
+              "Applied Psychology",
+              "Nursing Foundations I"
+            ],
+            "mandatory": "First Aid as part of Nursing Foundation I"
+          },
+          {
+            "label": "Semester II",
+            "subjects": [
+              "Applied Biochemistry",
+              "Applied Nutrition & Dietetics",
+              "Nursing Foundations II",
+              "Health/Nursing Informatics and Technology"
+            ],
+            "mandatory": "Health Assessment as part of Nursing Foundation II"
+          }
+        ]
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "The college has well-equipped laboratories to support practical-based nursing education.",
+        "items": [
+          "Anatomy Lab",
+          "Nursing Foundation Lab",
+          "Community Health Nursing Lab",
+          "OBG & CHN Lab",
+          "Nutrition Lab",
+          "Computer Lab"
+        ]
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": [
+          {
+            "name": "Nursing Foundation Department",
+            "description": "Trains students on basic nursing procedures using simulation labs before hospital exposure."
+          },
+          {
+            "name": "Community Health Nursing Department",
+            "description": "Focuses on preventive, promotive, and rehabilitative care through community engagement.",
+            "aims": [
+              "Enhance community health outcomes",
+              "Develop leadership in nursing students"
+            ],
+            "achievements": [
+              "Conducted COVID-19 vaccination drives",
+              "Organised national health camps"
+            ]
+          }
+        ]
+      },
+
+      "competencies": {
+        "title": "Core Competencies for B.Sc Nursing Graduates",
+        "items": [
+          {
+            "title": "Patient Centered Care",
+            "description": "Provide holistic, compassionate, culturally appropriate care."
+          },
+          {
+            "title": "Professionalism",
+            "description": "Deliver ethical, accountable nursing care."
+          }
+        ]
+      }
+    }
+  },
+
+  "bot": {
+    "id": "bot",
+    "title": "Bachelor of Occupational Therapy – Detailed Information",
+    "subtitle": "Explore curriculum, labs, and professional competencies for BOT program.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Occupational Therapy",
+        "description": "The BOT program combines theoretical learning and practical training to help individuals regain independence through therapeutic activities.",
+        "duration": "4 Years + 6 Months Internship",
+        "eligibility": "10+2 with Science",
+         "location": "Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "semesters": [
+          {
+            "label": "Semester I",
+            "subjects": [
+              "Introduction to Occupational Therapy",
+              "Human Anatomy",
+              "Human Physiology"
+            ]
+          }
+        ]
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "BOT education is heavily practical with extensive lab and clinical exposure.",
+        "items": [
+          "Anatomy & Physiology Lab",
+          "Biochemistry Lab",
+          "Clinical Training Units"
+        ]
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": [
+          {
+            "name": "Occupational Therapy Department",
+            "description": "Focuses on therapeutic rehabilitation and functional independence."
+          }
+        ]
+      },
+
+      "competencies": {
+        "title": "Core Competencies for BOT Graduates",
+        "items": [
+          {
+            "title": "Therapeutic Intervention",
+            "description": "Design activity-based interventions for rehabilitation."
+          }
+        ]
+      }
+    }
+  },
+  
+  "bpt": {
+    "id": "bpt",
+    "title": "Bachelor of Physiotherapy – Detailed Information",
+    "subtitle": "Expand the sections below to understand the curriculum, facilities, and professional outcomes of the Bachelor of Physiotherapy program.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Physiotherapy (BPT)",
+        "description": "The Bachelor of Physiotherapy (BPT) program is a comprehensive undergraduate course designed to prepare students to assess, diagnose, and treat physical impairments, movement disorders, and functional limitations. The program integrates strong theoretical foundations with extensive hands-on clinical training, enabling graduates to deliver evidence-based physiotherapy care across diverse healthcare settings.",
+        "duration": "4 Years (Academic) + 6 Months Compulsory Rotatory Internship",
+        "system": "Annual Examination System with integrated clinical training",
+        "eligibility": "10+2 with Science (Physics, Chemistry, Biology), as per University and regulatory norms",
+        "activities": "Clinical postings, patient assessments, case presentations, rehabilitation planning, workshops, seminars, hospital-based training, and community outreach programs",
+         "location": "Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "structureNote": "The BPT curriculum is divided into four academic years followed by a compulsory internship.",
+        "years": [
+          {
+            "label": "First Year",
+            "subjects": [
+              "Anatomy",
+              "Physiology",
+              "Biochemistry",
+              "Biomechanics",
+              "Psychology",
+              "Sociology"
+            ]
+          },
+          {
+            "label": "Second Year",
+            "subjects": [
+              "Pathology",
+              "Microbiology",
+              "Pharmacology",
+              "Exercise Therapy",
+              "Electrotherapy"
+            ]
+          },
+          {
+            "label": "Third Year",
+            "subjects": [
+              "General Medicine",
+              "General Surgery",
+              "Orthopedics & Traumatology",
+              "Musculoskeletal and Sports Physiotherapy",
+              "Cardio-Respiratory & General Physiotherapy"
+            ]
+          },
+          {
+            "label": "Fourth Year",
+            "subjects": [
+              "Neurology & Neurosurgery",
+              "Neuro-Physiotherapy",
+              "Community Medicine",
+              "Community Based Rehabilitation",
+              "Research Methodology & Biostatistics"
+            ]
+          }
+        ],
+        "internship": {
+          "duration": "6 Months (26 Weeks)",
+          "description": "The compulsory internship is rotatory in nature and conducted in university-recognized teaching hospitals within Karnataka. Students receive intensive hands-on clinical exposure across multiple specialties.",
+          "rotations": [
+            "Orthopaedics",
+            "Cardiothoracic including ICU",
+            "Neurology & Neurosurgery",
+            "Paediatrics",
+            "General Medicine",
+            "General Surgery",
+            "Obstetrics & Gynaecology",
+            "Outpatient and Inpatient Physiotherapy Services"
+          ]
+        }
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "Physiotherapy education is highly practical-oriented. The institution provides advanced laboratories and clinical facilities to ensure students gain real-world therapeutic and diagnostic experience.",
+        "items": [
+          "Anatomy & Physiology Laboratory",
+          "Electrotherapy and Electrodiagnosis Laboratory",
+          "Exercise Therapy & Kinesiology Laboratory",
+          "Clinical Skills / Yoga / Fitness Laboratory",
+          "Rehabilitation Equipment Lab (Ultrasound, IFT, TENS, Hot Packs, Treadmills, Balance Trainers, Mobility Aids)",
+          "Attached Teaching Hospitals and Clinical Training Units"
+        ]
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": [
+          {
+            "name": "Department of Physiotherapy",
+            "description": "The Department of Physiotherapy focuses on developing competent physiotherapy professionals through integrated academic teaching, clinical exposure, and research-oriented learning. The department emphasizes patient-centered care, ethical practice, and interdisciplinary collaboration.",
+            "aims": [
+              "Develop strong clinical reasoning and diagnostic skills",
+              "Integrate evidence-based physiotherapy practice",
+              "Prepare students for independent and hospital-based practice",
+              "Promote rehabilitation and disability prevention"
+            ],
+            "achievements": [
+              "Extensive clinical training partnerships with teaching hospitals",
+              "Community-based rehabilitation and health awareness programs",
+              "Student participation in sports injury management and wellness camps"
+            ]
+          }
+        ]
+      },
+
+      "competencies": {
+        "title": "Core Competencies for Bachelor of Physiotherapy Graduates",
+        "items": [
+          {
+            "title": "Clinical Assessment & Diagnosis",
+            "description": "Ability to assess, diagnose, and manage movement dysfunctions and physical impairments using scientific and clinical reasoning."
+          },
+          {
+            "title": "Therapeutic Skills",
+            "description": "Proficiency in exercise therapy, manual therapy, electrotherapy, and rehabilitation techniques."
+          },
+          {
+            "title": "Evidence-Based Practice",
+            "description": "Apply research findings and clinical evidence to optimize patient outcomes."
+          },
+          {
+            "title": "Professionalism & Ethics",
+            "description": "Demonstrate ethical practice, accountability, and professional conduct in patient care."
+          },
+          {
+            "title": "Communication & Teamwork",
+            "description": "Work effectively with patients, families, and multidisciplinary healthcare teams."
+          },
+          {
+            "title": "Community & Preventive Care",
+            "description": "Promote physical health, disability prevention, and rehabilitation at community and population levels."
+          }
+        ]
+      }
+    }
+  },
+  "bsc-mlt": {
+    "id": "bsc-mlt",
+    "title": "B.Sc Medical Laboratory Technology – Detailed Information",
+    "subtitle": "Detailed information will be updated soon.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Science in Medical Laboratory Technology",
+        "description": "",
+        "duration": "3 Years + 1 Year Internship",
+        "system": "",
+        "eligibility": "",
+        "activities": "",
+        "location": "Hassan & Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "semesters": []
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "",
+        "items": []
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": []
+      },
+
+      "competencies": {
+        "title": "Core Competencies for B.Sc MLT Graduates",
+        "items": []
+      }
+    }
+  },
+
+  "bsc-mit": {
+    "id": "bsc-mit",
+    "title": "B.Sc Medical Imaging Technology – Detailed Information",
+    "subtitle": "Detailed information will be updated soon.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Science in Medical Imaging Technology",
+        "description": "",
+        "duration": "3 Years + 1 Year Internship",
+        "system": "",
+        "eligibility": "",
+        "activities": "",
+        "location": "Hassan & Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "semesters": []
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "",
+        "items": []
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": []
+      },
+
+      "competencies": {
+        "title": "Core Competencies for B.Sc MIT Graduates",
+        "items": []
+      }
+    }
+  },
+
+  "bsc-atot": {
+    "id": "bsc-atot",
+    "title": "B.Sc Anaesthesia & Operation Theatre Technology – Detailed Information",
+    "subtitle": "Detailed information will be updated soon.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Science in Anaesthesia & Operation Theatre Technology",
+        "description": "",
+        "duration": "3 Years + 1 Year Internship",
+        "system": "",
+        "eligibility": "",
+        "activities": "",
+        "location": "Hassan & Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "semesters": []
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "",
+        "items": []
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": []
+      },
+
+      "competencies": {
+        "title": "Core Competencies for B.Sc AT & OT Graduates",
+        "items": []
+      }
+    }
+  },
+
+  "bsc-emt": {
+    "id": "bsc-emt",
+    "title": "B.Sc Emergency & Trauma Care Technology – Detailed Information",
+    "subtitle": "Detailed information will be updated soon.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Science in Emergency & Trauma Care Technology",
+        "description": "",
+        "duration": "3 Years + 1 Year Internship",
+        "system": "",
+        "eligibility": "",
+        "activities": "",
+        "location": "Hassan & Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "semesters": []
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "",
+        "items": []
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": []
+      },
+
+      "competencies": {
+        "title": "Core Competencies for B.Sc EMT Graduates",
+        "items": []
+      }
+    }
+  },
+
+  "bsc-rdt": {
+    "id": "bsc-rdt",
+    "title": "B.Sc Renal Dialysis Technology – Detailed Information",
+    "subtitle": "Detailed information will be updated soon.",
+
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Science in Renal Dialysis Technology",
+        "description": "",
+        "duration": "3 Years + 1 Year Internship",
+        "system": "",
+        "eligibility": "",
+        "activities": "",
+        "location": "Mangalore"
+      },
+
+      "syllabus": {
+        "title": "Course Syllabus",
+        "semesters": []
+      },
+
+      "labs": {
+        "title": "Laboratory Facilities",
+        "description": "",
+        "items": []
+      },
+
+      "departments": {
+        "title": "Department Overview",
+        "items": []
+      },
+
+      "competencies": {
+        "title": "Core Competencies for B.Sc RDT Graduates",
+        "items": []
+      }
+    }
+  }
+}
+ 
+
