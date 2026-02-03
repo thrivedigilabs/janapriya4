@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 
 // Replace with your repo name (with leading & trailing slash)
-const REPO_BASE = "/janapriya3/";
+const REPO_BASE = "/janapriya4/";
 
 
 // https://vitejs.dev/config/
@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
 
 
  return {
-   base:"/janapriya3",
+   base:"/janapriya4",
    server: {
      host: "::",
      port: 8080,
