@@ -6,11 +6,16 @@
     <script>
       (function () {
         var l = window.location;
-        var base = '/janapriya4'; // 👈 IMPORTANT
-        var q = l.search ? l.search + "&" : "?";
-        q += "p=" + encodeURIComponent(l.pathname.replace(base, "")) +
-             (l.hash ? "&h=" + encodeURIComponent(l.hash) : "");
-        l.replace(l.protocol + "//" + l.host + base + "/" + q);
+        var base = '/janapriya4';
+        var path = l.pathname.replace(base, '');
+        l.replace(
+          l.protocol +
+          '//' +
+          l.host +
+          base +
+          '/?p=' +
+          encodeURIComponent(path + l.search + l.hash)
+        );
       })();
     </script>
   </head>
