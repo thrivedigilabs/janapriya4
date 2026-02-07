@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var l = window.location;
+        var base = '/janapriya4';
+        var path = l.pathname.replace(base, '');
+        l.replace(
+          l.protocol +
+          '//' +
+          l.host +
+          base +
+          '/?p=' +
+          encodeURIComponent(path + l.search + l.hash)
+        );
+      })();
+    </script>
+  </head>
+  <body>Redirecting…</body>
+</html>
