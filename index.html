@@ -9,6 +9,19 @@
     <meta name="author" content="Janapriya Group of Institutions" />
     <link rel="canonical" href="https://janapriya.edu.in" />
 
+    <!-- GitHub Pages SPA redirect fix -->
+    <script>
+      (function () {
+        var m = /[?&]p=([^&]+)/.exec(location.search);
+        if (m) {
+          var path = decodeURIComponent(m[1]);
+          var h = /[?&]h=([^&]+)/.exec(location.search);
+          if (h) path += decodeURIComponent(h[0].slice(3));
+          history.replaceState(null, "", path);
+        }
+      })();
+    </script>
+
     <!-- Google Fonts - Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
