@@ -51,10 +51,20 @@ import clinical27 from '@/assets/Gallery Images/Clinical Facilities/Clinical Fac
 import clinical28 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities28.jpeg';
 
 /* ===============================
-   TYPES & CATEGORIES
+   TYPES
 ================================ */
 type Category = 'all' | 'campus' | 'clinical';
 
+type GalleryItem = {
+  src: string;
+  category: 'campus' | 'clinical';
+  title: string;
+  description: string;
+};
+
+/* ===============================
+   FILTER TABS
+================================ */
 const categories: { id: Category; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'campus', label: 'Campus' },
@@ -64,13 +74,12 @@ const categories: { id: Category; label: string }[] = [
 /* ===============================
    GALLERY ITEMS
 ================================ */
-const galleryItems = [
-  /* Campus */
+const galleryItems: GalleryItem[] = [
   campus1, campus2, campus3, campus4, campus5, campus6,
   campus7, campus8, campus9, campus10, campus11, campus12,
-].map((src, index) => ({
+].map((src, index): GalleryItem => ({
   src,
-  category: 'campus' as const,
+  category: 'campus',
   title: `Campus ${index + 1}`,
   description: 'Janapriya Campus View',
 }))
@@ -82,17 +91,20 @@ const galleryItems = [
     clinical18, clinical19, clinical20, clinical21, clinical22,
     clinical23, clinical24, clinical25, clinical26, clinical27,
     clinical28,
-  ].map((src, index) => ({
+  ].map((src, index): GalleryItem => ({
     src,
-    category: 'clinical' as const,
+    category: 'clinical',
     title: `Clinical Facility ${index + 1}`,
     description: 'Clinical Facilities & Training Labs',
   }))
 );
 
+/* ===============================
+   COMPONENT
+================================ */
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<Category>('all');
-  const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   const filteredItems =
     activeCategory === 'all'
@@ -127,7 +139,7 @@ export default function Gallery() {
             ))}
           </div>
 
-          {/* GRID */}
+          {/* IMAGE GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredItems.map((item, index) => (
               <div
@@ -143,6 +155,7 @@ export default function Gallery() {
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -152,7 +165,10 @@ export default function Gallery() {
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <button className="absolute top-4 right-4 text-white">
+          <button
+            className="absolute top-4 right-4 text-white"
+            onClick={() => setSelectedImage(null)}
+          >
             <X size={32} />
           </button>
 
