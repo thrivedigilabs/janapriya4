@@ -3,35 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Janapriya Group of Institutions | Excellence in Health Sciences Education</title>
-    <meta name="description" content="Janapriya Group of Institutions - Karnataka's premier health sciences institution offering B.Sc Nursing, BPT, GNM, MLT and more. Affiliated to RGUHS, approved by INC & KNC." />
-    <meta name="keywords" content="nursing college Karnataka, health sciences education, B.Sc Nursing, BPT, physiotherapy college, GNM, MLT, RGUHS affiliated, Mangaluru" />
+
+    <meta
+      name="description"
+      content="Janapriya Group of Institutions - Karnataka's premier health sciences institution offering B.Sc Nursing, BPT, GNM, MLT and more. Affiliated to RGUHS, approved by INC & KNC."
+    />
+    <meta
+      name="keywords"
+      content="nursing college Karnataka, health sciences education, B.Sc Nursing, BPT, physiotherapy college, GNM, MLT, RGUHS affiliated, Mangaluru"
+    />
     <meta name="author" content="Janapriya Group of Institutions" />
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://janapriya.edu.in" />
 
-    <!-- GitHub Pages SPA redirect fix -->
+    <!-- ===============================
+         GitHub Pages SPA redirect FIX
+         =============================== -->
     <script>
       (function () {
-        var m = /[?&]p=([^&]+)/.exec(location.search);
-        if (m) {
-          var path = decodeURIComponent(m[1]);
-          var h = /[?&]h=([^&]+)/.exec(location.search);
-          if (h) path += decodeURIComponent(h[0].slice(3));
-          history.replaceState(null, "", path);
+        var params = new URLSearchParams(window.location.search);
+        var redirectPath = params.get('p');
+
+        if (redirectPath) {
+          window.history.replaceState(
+            null,
+            '',
+            decodeURIComponent(redirectPath)
+          );
         }
       })();
     </script>
 
-    <!-- Google Fonts - Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
+    <!-- Open Graph -->
     <meta property="og:title" content="Janapriya Group of Institutions | Health Sciences Education" />
     <meta property="og:description" content="Premier health sciences institution in Karnataka. Admissions open for 2025-26." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://janapriya.edu.in" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Janapriya Group of Institutions" />
     <meta name="twitter:description" content="Excellence in Health Sciences Education - Admissions Open 2025-26" />
@@ -41,5 +61,7 @@
 
   <body>
     <div id="root"></div>
+
+    <!-- ⚠️ IMPORTANT: RELATIVE PATH (DO NOT USE /src/...) -->
   </body>
 </html>
