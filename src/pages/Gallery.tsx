@@ -4,67 +4,122 @@ import { Layout } from '@/components/layout/Layout';
 import { PageHero } from '@/components/PageHero';
 import { cn } from '@/lib/utils';
 
-import heroCampus from '@/assets/hero-campus.jpg';
-import heroInfrastructure from '@/assets/hero-infrastructure.jpg';
-import heroStudents from '@/assets/hero-students.jpg';
-import library from '@/assets/library.jpg';
-import facultyNursing from '@/assets/faculty-nursing.jpg';
-import facultyAllied from '@/assets/faculty-allied.jpg';
-import facultyParamedical from '@/assets/faculty-paramedical.jpg';
-import facultyPhysio from '@/assets/faculty-physio.jpg';
-import alumni from '@/assets/alumni.jpg';
+/* ===============================
+   CAMPUS IMAGES
+================================ */
+import campus1 from '@/assets/Gallery Images/Campus/Campus 1.jpeg';
+import campus2 from '@/assets/Gallery Images/Campus/Campus 2.jpeg';
+import campus3 from '@/assets/Gallery Images/Campus/Campus-3.jpeg';
+import campus4 from '@/assets/Gallery Images/Campus/Campus-4.jpeg';
+import campus5 from '@/assets/Gallery Images/Campus/Campus-5.jpeg';
+import campus6 from '@/assets/Gallery Images/Campus/Campus-6.jpeg';
+import campus7 from '@/assets/Gallery Images/Campus/Campus-7.jpeg';
+import campus8 from '@/assets/Gallery Images/Campus/Campus-8.jpeg';
+import campus9 from '@/assets/Gallery Images/Campus/Campus-9.jpeg';
+import campus10 from '@/assets/Gallery Images/Campus/Campus-10.jpeg';
+import campus11 from '@/assets/Gallery Images/Campus/Campus-11.jpeg';
+import campus12 from '@/assets/Gallery Images/Campus/Campus-12.jpeg';
 
-type Category = 'all' | 'campus' | 'labs' | 'library' | 'students' | 'infrastructure';
+/* ===============================
+   CLINICAL FACILITIES IMAGES
+================================ */
+import clinical3 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities3.jpeg';
+import clinical4 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities4.jpeg';
+import clinical5 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities5.jpeg';
+import clinical6 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities6.jpeg';
+import clinical7 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities7.jpeg';
+import clinical8 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities8.jpeg';
+import clinical9 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities9.jpeg';
+import clinical10 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities10.jpeg';
+import clinical11 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities11.jpeg';
+import clinical12 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities12.jpeg';
+import clinical13 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities13.jpeg';
+import clinical14 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities14.jpeg';
+import clinical15 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities15.jpeg';
+import clinical16 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities16.jpeg';
+import clinical17 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities17.jpeg';
+import clinical18 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities18.jpeg';
+import clinical19 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities19.jpeg';
+import clinical20 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities20.jpeg';
+import clinical21 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities21.jpeg';
+import clinical22 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities22.jpeg';
+import clinical23 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities23.jpeg';
+import clinical24 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities24.jpeg';
+import clinical25 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities25.jpeg';
+import clinical26 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities26.jpeg';
+import clinical27 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities27.jpeg';
+import clinical28 from '@/assets/Gallery Images/Clinical Facilities/Clinical Facilities28.jpeg';
+
+/* ===============================
+   TYPES & CATEGORIES
+================================ */
+type Category = 'all' | 'campus' | 'clinical';
 
 const categories: { id: Category; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'campus', label: 'Campus' },
-  { id: 'labs', label: 'Labs' },
-  { id: 'library', label: 'Library' },
-  { id: 'students', label: 'Students' },
-  { id: 'infrastructure', label: 'Infrastructure' },
+  { id: 'clinical', label: 'Clinical Facilities' },
 ];
 
+/* ===============================
+   GALLERY ITEMS
+================================ */
 const galleryItems = [
-  { src: heroCampus, category: 'campus', title: 'Main Campus Building', description: 'The iconic main building of Janapriya Group of Institutions' },
-  { src: heroInfrastructure, category: 'infrastructure', title: 'Modern Infrastructure', description: 'State-of-the-art facilities for quality education' },
-  { src: heroStudents, category: 'students', title: 'Student Life', description: 'Vibrant campus life with diverse activities' },
-  { src: library, category: 'library', title: 'Central Library', description: 'Well-stocked library with extensive medical resources' },
-  { src: facultyNursing, category: 'labs', title: 'Nursing Skills Lab', description: 'Advanced nursing simulation and practice facility' },
-  { src: facultyAllied, category: 'labs', title: 'Allied Health Sciences Lab', description: 'Modern diagnostic and therapeutic equipment' },
-  { src: facultyParamedical, category: 'labs', title: 'Paramedical Lab', description: 'Comprehensive lab for paramedical training' },
-  { src: facultyPhysio, category: 'labs', title: 'Physiotherapy Lab', description: 'Equipped with latest rehabilitation equipment' },
-  { src: alumni, category: 'students', title: 'Alumni Network', description: 'Our successful alumni making a difference in healthcare' },
-];
+  /* Campus */
+  campus1, campus2, campus3, campus4, campus5, campus6,
+  campus7, campus8, campus9, campus10, campus11, campus12,
+].map((src, index) => ({
+  src,
+  category: 'campus' as const,
+  title: `Campus ${index + 1}`,
+  description: 'Janapriya Campus View',
+}))
+.concat(
+  [
+    clinical3, clinical4, clinical5, clinical6, clinical7,
+    clinical8, clinical9, clinical10, clinical11, clinical12,
+    clinical13, clinical14, clinical15, clinical16, clinical17,
+    clinical18, clinical19, clinical20, clinical21, clinical22,
+    clinical23, clinical24, clinical25, clinical26, clinical27,
+    clinical28,
+  ].map((src, index) => ({
+    src,
+    category: 'clinical' as const,
+    title: `Clinical Facility ${index + 1}`,
+    description: 'Clinical Facilities & Training Labs',
+  }))
+);
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<Category>('all');
   const [selectedImage, setSelectedImage] = useState<typeof galleryItems[0] | null>(null);
 
-  const filteredItems = activeCategory === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeCategory);
+  const filteredItems =
+    activeCategory === 'all'
+      ? galleryItems
+      : galleryItems.filter(item => item.category === activeCategory);
 
   return (
     <Layout>
       <PageHero
         title="Campus Gallery"
-        subtitle="Explore Our World-Class Facilities"
+        subtitle="Campus & Clinical Facilities"
       />
 
       <section className="section-padding">
         <div className="section-container">
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {categories.map((cat) => (
+
+          {/* FILTER TABS */}
+          <div className="flex justify-center gap-3 mb-10 flex-wrap">
+            {categories.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 className={cn(
-                  "px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
+                  "px-6 py-2 rounded-full text-sm font-medium transition-all",
                   activeCategory === cat.id
-                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
-                    : "bg-secondary text-foreground hover:bg-primary/10 hover:-translate-y-0.5"
+                    ? "bg-primary text-primary-foreground shadow-lg"
+                    : "bg-secondary hover:bg-primary/10"
                 )}
               >
                 {cat.label}
@@ -72,64 +127,40 @@ export default function Gallery() {
             ))}
           </div>
 
-          {/* Image Grid */}
+          {/* GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredItems.map((item, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedImage(item)}
-                className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-2 animate-scale-in"
-                style={{ animationDelay: `${index * 80}ms` }}
+                className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-card hover:-translate-y-1 transition"
               >
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-lg font-semibold text-background">{item.title}</h3>
-                    <p className="text-sm text-background/80 mt-1">{item.description}</p>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
-
-          {filteredItems.length === 0 && (
-            <p className="text-center text-muted-foreground py-12">No images found in this category.</p>
-          )}
         </div>
       </section>
 
-      {/* Lightbox Modal */}
+      {/* LIGHTBOX */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-foreground/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 p-3 text-background hover:text-accent transition-all duration-300 hover:rotate-90"
-            aria-label="Close lightbox"
-          >
-            <X className="h-8 w-8" />
+          <button className="absolute top-4 right-4 text-white">
+            <X size={32} />
           </button>
-          
-          <div 
-            className="max-w-5xl w-full max-h-[90vh] flex flex-col animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.title}
-              className="w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
-            />
-            <div className="mt-4 text-center text-background">
-              <h3 className="text-xl font-semibold">{selectedImage.title}</h3>
-              <p className="text-background/80 mt-1">{selectedImage.description}</p>
-            </div>
-          </div>
+
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.title}
+            className="max-w-5xl max-h-[90vh] object-contain rounded-lg"
+          />
         </div>
       )}
     </Layout>
