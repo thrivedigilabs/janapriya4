@@ -29,7 +29,7 @@ const navigation = [
   },
   { name: 'Admissions', href: '/admissions' },
   { name: 'Gallery', href: '/gallery' },
-  { name: 'Examinations', href: '/examinations' },
+ //{ name: 'Examinations', href: '/examinations' },
   { name: 'Resources', href: '/resources' },
   { name: 'Students', href: '/students' },
   { name: 'Contact', href: '/contact' },
