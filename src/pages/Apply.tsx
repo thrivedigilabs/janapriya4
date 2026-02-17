@@ -10,20 +10,23 @@ import { useToast } from '@/hooks/use-toast';
 import { submitLeadToGoogleSheet } from '@/config/googleSheets';
 
 const undergraduatePrograms = [
-  'B.Sc Nursing (4 Years)',
-  'Bachelor of Physiotherapy (BPT)',
+  'B.Sc Nursing',
+  'Bachelor of Occupational Therapy',
+  'Bachelor of Physiotherapy',
   'B.Sc Medical Laboratory Technology',
-  'B.Sc Emergency Medical Technology',
-  'B.Sc Allied Health Sciences',
+  'B.Sc Medical Imaging Technology',
+  'B.Sc Anesthesia & Operation Theatre Technology',
+  'B.Sc Emergency & Trauma Care Technology',
+  'B.Sc Renal Dialysis Technology',
 ];
 
 const diplomaPrograms = [
-  'GNM - General Nursing & Midwifery',
-  'DMLT - Diploma in Medical Lab Technology',
-  'D.OTT - Diploma in Operation Theatre Technology',
-  'CNA - Certified Nursing Assistant',
-  'Phlebotomy Technician',
+  'DMLT – Diploma in Medical Laboratory Technology',
+  'DMIT – Diploma in Medical Imaging Technology',
+  'DDT – Diploma in Dialysis Technology',
+  'DOT & AT – Diploma in Operation Theater & Anesthesia Technology',
 ];
+
 
 const Apply = () => {
   const { toast } = useToast();
