@@ -128,7 +128,8 @@ const Academics = () => {
     (course: any) =>
       course.id === 'bsc-nursing' ||
       course.id === 'bot' ||
-      course.id === 'bpt'
+      course.id === 'bpt' ||
+      course.id === 'ahs'
   );
 
   return (

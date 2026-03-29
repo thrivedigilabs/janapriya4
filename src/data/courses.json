@@ -300,6 +300,129 @@
       }
     }
   },
+  "ahs": {
+    "id": "ahs",
+    "title": "Bachelor of Allied Health Sciences (AHS) – Detailed Information",
+    "subtitle": "Expand the sections below to understand the curriculum, facilities, and professional outcomes of the Bachelor of Allied Health Sciences program.",
+    "sections": {
+      "overview": {
+        "title": "Course Overview",
+        "degreeTitle": "Bachelor of Allied Health Sciences (AHS)",
+        "description": "The Allied Health Sciences (AHS) program is designed to train skilled healthcare professionals who support diagnosis, treatment, and patient care across multiple medical domains. The course integrates strong theoretical knowledge with hands-on clinical training to develop expertise in technical, diagnostic, and therapeutic healthcare services.",
+        "duration": "3 Years (Academic) + 1 Year Compulsory Internship",
+        "system": "Annual Examination System with Clinical Training",
+        "eligibility": "10+2 with Science (Physics, Chemistry, Biology)",
+        "activities": "Clinical postings & hospital exposure, Patient assessment & diagnostics, Laboratory work & technical training, Case presentations & interdisciplinary collaboration",
+        "location": "Hassan & Mangalore"
+      },
+      "syllabus": {
+        "title": "Course Syllabus",
+        "years": [
+          {
+            "label": "First Year",
+            "subjects": [
+              "Anatomy",
+              "Physiology",
+              "Biochemistry",
+              "Microbiology",
+              "Pathology"
+            ]
+          },
+          {
+            "label": "Second Year",
+            "subjects": [
+              "(Varies by specialization, includes:)",
+              "Pharmacology",
+              "Applied Pathology & Microbiology",
+              "Medical Physics / Emergency / OT basics",
+              "Equipment handling & clinical techniques"
+            ]
+          },
+          {
+            "label": "Third Year",
+            "subjects": [
+              "(Advanced & specialization-based training)",
+              "Clinical practice in respective domains",
+              "Advanced diagnostic & therapeutic techniques",
+              "Patient care & applied medical procedures"
+            ]
+          },
+          {
+            "label": "Specializations Include:",
+            "subjects": [
+              "Medical Laboratory Technology (MLT)",
+              "Medical Imaging Technology (MIT)",
+              "Emergency Medical Technology (EMT)",
+              "Operation Theatre & Anaesthesia Technology",
+              "Renal Dialysis Technology"
+            ]
+          }
+        ],
+        "internship": {
+          "duration": "1 Year compulsory clinical internship. Conducted in recognized teaching hospitals. Hands-on experience in real healthcare environments."
+        }
+      },
+      "labs": {
+        "title": "Laboratory / Facilities",
+        "description": "Allied Health Sciences education is highly practical and supported by advanced infrastructure:",
+        "items": [
+          "Modern laboratories for diagnostics and technical training",
+          "Clinical skill labs with simulation-based learning",
+          "Well-equipped classrooms with audio-visual aids",
+          "Library with medical books, journals & digital resources",
+          "Attached teaching hospitals for real-world exposure"
+        ]
+      },
+      "departments": {
+        "title": "Department Overview",
+        "items": [
+          {
+            "name": "Department of Allied Health Sciences",
+            "description": "The Department of Allied Health Sciences focuses on developing competent healthcare professionals through integrated academic learning, clinical exposure, and research-based education.",
+            "aims": [
+              "Emphasis on patient-centered care",
+              "Strong clinical and diagnostic training",
+              "Interdisciplinary healthcare collaboration",
+              "Ethical and professional practice focus"
+            ]
+          }
+        ]
+      },
+      "competencies": {
+        "title": "Core Competencies",
+        "items": [
+          {
+            "title": "Clinical & Diagnostic Skills",
+            "description": "Ability to assist in diagnosis, testing, and treatment using scientific methods."
+          },
+          {
+            "title": "Technical Proficiency",
+            "description": "Expertise in operating medical equipment and performing diagnostic procedures."
+          },
+          {
+            "title": "Therapeutic & Patient Care Skills",
+            "description": "Support in treatment procedures and patient management."
+          },
+          {
+            "title": "Evidence-Based Practice",
+            "description": "Application of scientific research and clinical data in healthcare decisions."
+          },
+          {
+            "title": "Professionalism & Ethics",
+            "description": "Strong ethical standards, accountability, and patient-focused approach."
+          },
+          {
+            "title": "Communication & Teamwork",
+            "description": "Work effectively within multidisciplinary healthcare teams."
+          },
+          {
+            "title": "Community Healthcare Contribution",
+            "description": "Promote health awareness and preventive care at community level."
+          }
+        ]
+      }
+    }
+  },
   "bsc-mlt": {
     "id": "bsc-mlt",
     "title": "B.Sc Medical Laboratory Technology – Detailed Information",
