@@ -7,8 +7,8 @@ import logo from '@/assets/logo.png';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { 
-    name: 'About', 
+  {
+    name: 'About',
     href: '/about',
     children: [
       { name: 'Overview', href: '/about?tab=overview' },
@@ -18,8 +18,8 @@ const navigation = [
       { name: 'Approvals', href: '/about?tab=approvals' },
     ]
   },
-  { 
-    name: 'Academics', 
+  {
+    name: 'Academics',
     href: '/academics',
     children: [
       { name: 'Our Institutes', href: '/academics?tab=faculties' },
@@ -29,7 +29,7 @@ const navigation = [
   },
   { name: 'Admissions', href: '/admissions' },
   { name: 'Gallery', href: '/gallery' },
- //{ name: 'Examinations', href: '/examinations' },
+  //{ name: 'Examinations', href: '/examinations' },
   { name: 'Resources', href: '/resources' },
   { name: 'Students', href: '/students' },
   { name: 'Contact', href: '/contact' },
@@ -61,9 +61,9 @@ export function Header() {
         <div className="section-container">
           <div className="flex items-center justify-between py-2 text-sm">
             <div className="flex items-center gap-6">
-              <a href="mailto:jipmshassan@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <a href="mailto:janapriyaconhassan@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail className="h-4 w-4" />
-                <span className="hidden sm:inline">jipmshassan@gmail.com</span>
+                <span className="hidden sm:inline">janapriyaconhassan@gmail.com</span>
               </a>
               <a href="tel:+919900747923" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Phone className="h-4 w-4" />
@@ -96,7 +96,7 @@ export function Header() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
               {navigation.map((item) => (
-                <div 
+                <div
                   key={item.name}
                   className="relative"
                   onMouseEnter={() => item.children && setOpenDropdown(item.name)}
@@ -106,15 +106,15 @@ export function Header() {
                     to={item.href}
                     className={cn(
                       "px-3 py-2 text-sm font-medium rounded-md transition-colors flex items-center gap-1",
-                      location.pathname === item.href 
-                        ? "text-primary bg-primary/5" 
+                      location.pathname === item.href
+                        ? "text-primary bg-primary/5"
                         : "text-foreground hover:text-primary hover:bg-primary/5"
                     )}
                   >
                     {item.name}
                     {item.children && <ChevronDown className="h-3 w-3" />}
                   </Link>
-                  
+
                   {item.children && openDropdown === item.name && (
                     <div className="absolute top-full left-0 w-48 bg-background border border-border rounded-md shadow-premium-lg py-2 animate-fade-in">
                       {item.children.map((child) => (
@@ -139,7 +139,7 @@ export function Header() {
                   Apply Now
                 </Button>
               </Link>
-              
+
               <button
                 onClick={() => setIsOpen(true)}
                 className="lg:hidden p-2 text-foreground hover:bg-muted rounded-md"
@@ -155,7 +155,7 @@ export function Header() {
       {/* Mobile Drawer */}
       {isOpen && (
         <>
-          <div 
+          <div
             className="fixed inset-0 bg-foreground/20 z-40 lg:hidden animate-fade-in"
             onClick={() => setIsOpen(false)}
           />
@@ -171,7 +171,7 @@ export function Header() {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              
+
               <div className="flex-1 overflow-y-auto py-4">
                 {navigation.map((item) => (
                   <div key={item.name}>
@@ -179,18 +179,18 @@ export function Header() {
                       to={item.href}
                       className={cn(
                         "flex items-center justify-between px-6 py-3 text-base font-medium transition-colors",
-                        location.pathname === item.href 
-                          ? "text-primary bg-primary/5" 
+                        location.pathname === item.href
+                          ? "text-primary bg-primary/5"
                           : "text-foreground hover:text-primary hover:bg-primary/5"
                       )}
                     >
                       {item.name}
                       {item.children && (
-                        <ChevronDown 
+                        <ChevronDown
                           className={cn(
                             "h-4 w-4 transition-transform",
                             openDropdown === item.name && "rotate-180"
-                          )} 
+                          )}
                         />
                       )}
                     </Link>
