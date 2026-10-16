@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight } from 'lucide-react';
+import { useSection, formatDate } from '@/lib/cms';
 
-const news = [
+const fallbackNews = [
   {
     id: 1,
     title: 'Admissions Open for Academic Year 2025-26',
@@ -27,6 +28,10 @@ const news = [
 ];
 
 export function NewsEvents() {
+  const news = useSection('announcements', fallbackNews.map((n) => ({ ...n, link: '/contact' })), (a) => ({
+    id: a.id, title: a.title, date: formatDate(a.date), category: a.category, excerpt: a.excerpt,
+    link: a.body ? `/news/${a.id}` : a.link || '/news',
+  })).slice(0, 3);
   return (
     <section className="section-padding bg-background">
       <div className="section-container">
@@ -35,7 +40,7 @@ export function NewsEvents() {
             <h2 className="section-title">Latest Updates</h2>
             <p className="text-muted-foreground mt-2">News, events, and announcements</p>
           </div>
-          <Link to="/contact" className="hidden md:block">
+          <Link to="/news" className="hidden md:block">
             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
               View All News
             </Button>
@@ -64,7 +69,7 @@ export function NewsEvents() {
               </p>
 
               <Link 
-                to="/contact"
+                to={item.link}
                 className="inline-flex items-center gap-1 text-sm text-primary font-medium hover:gap-2 transition-all"
               >
                 Read More <ArrowRight className="h-4 w-4" />
@@ -74,7 +79,7 @@ export function NewsEvents() {
         </div>
 
         <div className="text-center mt-8 md:hidden">
-          <Link to="/contact">
+          <Link to="/news">
             <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
               View All News
             </Button>

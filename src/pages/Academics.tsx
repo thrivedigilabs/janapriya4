@@ -1,3 +1,4 @@
+import { useSection } from '@/lib/cms';
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 
@@ -102,7 +103,7 @@ const diplomaPrograms = [
 
 /* --------------------------- CALENDAR ---------------------------- */
 
-const calendar = [
+const fallbackCalendar = [
   { event: 'Academic Year Begins', date: 'To be announced' },
   { event: 'Internal Assessments', date: 'To be announced' },
   { event: 'University Examinations', date: 'To be announced' },
@@ -111,6 +112,7 @@ const calendar = [
 /* =========================== COMPONENT ========================== */
 
 const Academics = () => {
+  const calendar = useSection('calendar_events', fallbackCalendar, (c) => ({ event: c.event, date: c.date_text }));
   const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState('faculties');
   const [openProgram, setOpenProgram] = useState<string | null>(null);
