@@ -2,8 +2,9 @@ import { Layout } from '@/components/layout/Layout';
 import { PageHero } from '@/components/PageHero';
 import { Button } from '@/components/ui/button';
 import { Download, Calendar, FileText } from 'lucide-react';
+import { useSection, fileUrl } from '@/lib/cms';
 
-const schedules = [
+const fallbackSchedules = [
   { program: 'B.Sc Nursing', date: 'April 1-15, 2025', status: 'Upcoming' },
   { program: 'BPT', date: 'April 5-20, 2025', status: 'Upcoming' },
   { program: 'B.Sc MLT / EMT', date: 'April 10-25, 2025', status: 'Upcoming' },
@@ -11,7 +12,7 @@ const schedules = [
   { program: 'DMLT / D.OTT', date: 'March 20 - April 5, 2025', status: 'Upcoming' },
 ];
 
-const downloads = [
+const fallbackDownloads: { name: string; type: string; size: string; href?: string }[] = [
   { name: 'Exam Time Table 2024-25', type: 'PDF', size: '245 KB' },
   { name: 'Previous Year Question Papers', type: 'ZIP', size: '12 MB' },
   { name: 'Exam Guidelines & Instructions', type: 'PDF', size: '180 KB' },
@@ -19,6 +20,10 @@ const downloads = [
 ];
 
 const Examinations = () => {
+  const schedules = useSection('exam_schedules', fallbackSchedules, (e) => ({ program: e.program, date: e.date_text, status: e.status }));
+  const downloads = useSection('exam_downloads', fallbackDownloads, (d) => ({
+    name: d.name, type: d.type, size: d.size_text || '-', href: d.file ? fileUrl(d.file, false, d.name) : d.url,
+  }));
   return (
     <Layout>
       <PageHero title="Examinations" subtitle="Exam Schedules, Results & Resources" />
@@ -58,9 +63,17 @@ const Examinations = () => {
                       <h3 className="font-semibold text-foreground">{item.name}</h3>
                       <p className="text-sm text-muted-foreground">{item.type} • {item.size}</p>
                     </div>
-                    <Button size="sm" variant="outline" className="border-primary text-primary">
-                      <Download className="h-4 w-4" />
-                    </Button>
+                    {item.href ? (
+                      <Button asChild size="sm" variant="outline" className="border-primary text-primary">
+                        <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`Download ${item.name}`}>
+                          <Download className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button size="sm" variant="outline" className="border-primary text-primary">
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    )}
                   </div>
                 ))}
               </div>
