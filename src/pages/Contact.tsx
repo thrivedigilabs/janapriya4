@@ -17,7 +17,8 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     
     await submitLeadToGoogleSheet({
       formType: 'contact',
@@ -31,7 +32,7 @@ const Contact = () => {
 
     toast({ title: "Message Sent", description: "We'll get back to you soon!" });
     setIsSubmitting(false);
-    e.currentTarget.reset();
+    form.reset();
   };
 
   return (

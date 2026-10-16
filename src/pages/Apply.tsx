@@ -40,7 +40,8 @@ const Apply = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     
     await submitLeadToGoogleSheet({
       formType: 'application',
@@ -67,7 +68,7 @@ const Apply = () => {
       description: "We have received your application. Our admissions team will contact you shortly.",
     });
     setIsSubmitting(false);
-    e.currentTarget.reset();
+    form.reset();
     setSelectedGender('');
     setSelectedProgram('');
     setSelectedQualification('');
