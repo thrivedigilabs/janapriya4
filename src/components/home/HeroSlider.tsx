@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import heroCampus from '@/assets/hero-campus.jpg';
 import heroStudents from '@/assets/hero-students.jpg';
 import heroInfrastructure from '@/assets/hero-infrastructure.jpg';
+import { useSection, fileUrl } from '@/lib/cms';
 
-const slides = [
+const fallbackSlides = [
   {
     id: 1,
     image: heroCampus,
@@ -34,6 +35,9 @@ const slides = [
 ];
 
 export function HeroSlider() {
+  const slides = useSection('hero_slides', fallbackSlides, (h) => ({
+    id: h.id, image: fileUrl(h.image), title: h.title, subtitle: h.subtitle, cta: h.cta, ctaLink: h.cta_link,
+  }));
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {

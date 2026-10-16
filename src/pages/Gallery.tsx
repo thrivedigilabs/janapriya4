@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import { Layout } from '@/components/layout/Layout';
 import { PageHero } from '@/components/PageHero';
 import { cn } from '@/lib/utils';
+import { useContent, fileUrl } from '@/lib/cms';
 
 /* ===============================
    CAMPUS IMAGES
@@ -53,11 +54,12 @@ import clinical28 from '@/assets/Gallery Images/Clinical Facilities/Clinical Fac
 /* ===============================
    TYPES
 ================================ */
-type Category = 'all' | 'campus' | 'clinical';
+type Category = string;
 
 type GalleryItem = {
   src: string;
-  category: 'campus' | 'clinical';
+  category: string;
+  thumb?: string;
   title: string;
   description: string;
 };
@@ -65,7 +67,7 @@ type GalleryItem = {
 /* ===============================
    FILTER TABS
 ================================ */
-const categories: { id: Category; label: string }[] = [
+const fallbackCategories: { id: Category; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'campus', label: 'Campus' },
   { id: 'clinical', label: 'Clinical Facilities' },
@@ -74,7 +76,7 @@ const categories: { id: Category; label: string }[] = [
 /* ===============================
    GALLERY ITEMS
 ================================ */
-const galleryItems: GalleryItem[] = [
+const fallbackItems: GalleryItem[] = [
   campus1, campus2, campus3, campus4, campus5, campus6,
   campus7, campus8, campus9, campus10, campus11, campus12,
 ].map((src, index): GalleryItem => ({
@@ -105,6 +107,18 @@ const galleryItems: GalleryItem[] = [
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<Category>('all');
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const { data } = useContent();
+  const fromCms = !!data?.gallery_images?.length;
+  const categories = fromCms
+    ? [{ id: 'all', label: 'All' }, ...data!.gallery_albums
+        .filter((a) => data!.gallery_images.some((i) => i.album_id === a.id))
+        .map((a) => ({ id: String(a.id), label: a.name }))]
+    : fallbackCategories;
+  const galleryItems: GalleryItem[] = fromCms
+    ? data!.gallery_images.map((i) => ({
+        src: fileUrl(i.image), thumb: fileUrl(i.image, true), category: String(i.album_id), title: i.title, description: i.description,
+      }))
+    : fallbackItems;
 
   const filteredItems =
     activeCategory === 'all'
@@ -148,8 +162,9 @@ export default function Gallery() {
                 className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-card hover:-translate-y-1 transition"
               >
                 <img
-                  src={item.src}
+                  src={item.thumb ?? item.src}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

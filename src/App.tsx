@@ -14,6 +14,10 @@ import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
+import News from "./pages/News";
+import { lazy, Suspense } from "react";
+
+const Admin = lazy(() => import("./pages/Admin"));
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,9 @@ const App = () => (
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/news/:id" element={<News />} />
+          <Route path="/admin" element={<Suspense fallback={null}><Admin /></Suspense>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
