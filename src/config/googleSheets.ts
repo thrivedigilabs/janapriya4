@@ -37,6 +37,10 @@ export interface LeadData {
 
 export const submitLeadToGoogleSheet = async (data: LeadData): Promise<boolean> => {
   try {
+    const payload = { ...data, timestamp: new Date().toISOString() };
+    // Also store in the website database so enquiries show in the admin panel.
+    fetch('/api/lead.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      .catch((e) => console.error('Lead API error:', e));
     const response = await fetch(GOOGLE_SHEETS_URL, {
       method: 'POST',
       mode: 'no-cors',
