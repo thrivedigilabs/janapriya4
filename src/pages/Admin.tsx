@@ -76,7 +76,7 @@ function Login({ onDone }: { onDone: (u: any) => void }) {
 }
 
 function Panel({ email, onLogout }: { email: string; onLogout: () => void }) {
-  const [sec, setSec] = useState<Section | 'password'>(SECTIONS[0]);
+  const [sec, setSec] = useState<Section | 'password' | 'leads'>('leads');
   return (
     <div className="min-h-screen bg-secondary">
       <header className="bg-primary text-primary-foreground px-6 py-3 flex items-center justify-between">
@@ -88,9 +88,10 @@ function Panel({ email, onLogout }: { email: string; onLogout: () => void }) {
           {SECTIONS.map((s) => (
             <button key={s.id} onClick={() => setSec(s)} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === s ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>{s.label}</button>
           ))}
+          <button onClick={() => setSec('leads')} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === 'leads' ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>Enquiries</button>
           <button onClick={() => setSec('password')} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === 'password' ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>Change password</button>
         </nav>
-        <main className="flex-1 p-4 md:p-6">{sec === 'password' ? <Password /> : <Editor key={sec.id} sec={sec} />}</main>
+        <main className="flex-1 p-4 md:p-6">{sec === 'password' ? <Password /> : sec === 'leads' ? <Leads /> : <Editor key={sec.id} sec={sec} />}</main>
       </div>
     </div>
   );
@@ -206,6 +207,61 @@ function Editor({ sec }: { sec: Section }) {
             <div className="flex gap-2 justify-end">
               <Button variant="outline" onClick={() => setEdit(null)}>Cancel</Button>
               <Button disabled={busy} onClick={save}>{busy ? 'Please wait…' : 'Save'}</Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const LABELS: Record<string, string> = { formType: 'Form', firstName: 'First name', lastName: 'Last name', dateOfBirth: 'Date of birth', programType: 'Program type', previousInstitution: 'Previous institution' };
+
+function Leads() {
+  const [rows, setRows] = useState<Row[]>([]); const [open, setOpen] = useState<Row | null>(null); const [type, setType] = useState('');
+  const load = () => api('list', undefined, '&r=leads').then((j) => setRows(j.rows)).catch((x) => alert(x.message));
+  useEffect(() => { load(); }, []);
+  const view = (r: Row) => { setOpen(r); if (!Number(r.is_read)) api('save', { resource: 'leads', id: r.id, data: { is_read: 1 } }).then(load); };
+  const remove = (r: Row) => confirm(`Delete enquiry from ${r.name}?`) && api('delete', { resource: 'leads', id: r.id }).then(() => { setOpen(null); load(); });
+  const shown = type ? rows.filter((r) => r.form_type === type) : rows;
+  const exportCsv = () => {
+    const parsed = shown.map((r) => ({ received: r.created_at, ...JSON.parse(r.data) }));
+    const cols = Array.from(new Set(parsed.flatMap((p) => Object.keys(p))));
+    const esc = (v: unknown) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+    const csv = [cols.map(esc).join(','), ...parsed.map((p) => cols.map((c) => esc((p as Row)[c])).join(','))].join('\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'enquiries.csv'; a.click();
+  };
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <h2 className="text-2xl font-bold mr-auto">Enquiries ({rows.filter((r) => !Number(r.is_read)).length} new)</h2>
+        <select className="border rounded px-2 py-2 bg-background" value={type} onChange={(e) => setType(e.target.value)}>
+          <option value="">All forms</option><option value="contact">Contact</option><option value="application">Application</option>
+        </select>
+        <Button variant="outline" onClick={exportCsv} disabled={!shown.length}>Download Excel (CSV)</Button>
+      </div>
+      <div className="bg-background rounded-xl divide-y overflow-x-auto">
+        {!shown.length && <p className="p-4 text-muted-foreground">No enquiries yet.</p>}
+        {shown.map((r) => (
+          <button key={r.id} onClick={() => view(r)} className={`w-full text-left p-4 flex flex-wrap gap-x-6 gap-y-1 hover:bg-secondary ${Number(r.is_read) ? '' : 'font-semibold'}`}>
+            <span className="w-40 text-sm">{r.created_at}</span>
+            <span className="w-24 text-sm capitalize">{r.form_type}</span>
+            <span className="flex-1 min-w-[8rem]">{r.name}</span><span className="text-sm">{r.phone}</span><span className="text-sm">{r.email}</span>
+          </button>
+        ))}
+      </div>
+      {open && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-start justify-center overflow-auto p-4" onClick={() => setOpen(null)}>
+          <div className="bg-background rounded-xl p-6 w-full max-w-xl my-8" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-bold mb-4">Enquiry — {open.created_at}</h3>
+            <dl className="grid grid-cols-3 gap-2 text-sm">
+              {Object.entries(JSON.parse(open.data)).filter(([k, v]) => v !== '' && k !== 'timestamp').map(([k, v]) => (
+                <div key={k} className="contents"><dt className="text-muted-foreground">{LABELS[k] ?? k.charAt(0).toUpperCase() + k.slice(1)}</dt><dd className="col-span-2 whitespace-pre-line break-words">{String(v)}</dd></div>
+              ))}
+            </dl>
+            <div className="flex gap-2 justify-end mt-6">
+              <Button variant="outline" className="text-red-600" onClick={() => remove(open)}>Delete</Button>
+              <Button onClick={() => setOpen(null)}>Close</Button>
             </div>
           </div>
         </div>

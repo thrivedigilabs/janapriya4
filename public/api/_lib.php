@@ -28,6 +28,9 @@ const RESOURCES = [
   'calendar_events' => [
     'fields' => ['event' => 's', 'date_text' => 's', 'sort_order' => 'i'], 'required' => ['event'], 'order' => 'sort_order, id',
   ],
+  'leads' => [
+    'fields' => ['is_read' => 'b'], 'order' => 'id DESC', 'private' => true,
+  ],
 ];
 
 const FILE_RE = '/^(t_)?[a-f0-9]{24}\.(jpg|pdf|zip|docx?|xlsx?)$/';
@@ -85,7 +88,7 @@ function list_rows(string $name, bool $public): array {
 
 function public_content(): array {
   $out = [];
-  foreach (array_keys(RESOURCES) as $name) $out[$name] = list_rows($name, true);
+  foreach (RESOURCES as $name => $def) if (empty($def['private'])) $out[$name] = list_rows($name, true);
   return $out;
 }
 
