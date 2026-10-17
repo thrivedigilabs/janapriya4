@@ -52,11 +52,11 @@ async function api(action: string, body?: unknown, query = ''): Promise<any> {
 }
 
 export default function Admin() {
-  const [user, setUser] = useState<{ email: string } | null | undefined>(undefined);
+  const [user, setUser] = useState<{ email: string; name?: string; role?: string } | null | undefined>(undefined);
   useEffect(() => { document.title = 'Admin — Janapriya'; api('me').then((j) => setUser(j.user)).catch(() => setUser(null)); }, []);
   if (user === undefined) return <p className="p-8">Loading…</p>;
   if (!user) return <Login onDone={setUser} />;
-  return <Panel email={user.email} onLogout={() => api('logout', {}).finally(() => setUser(null))} />;
+  return <Panel email={user.name || user.email} isAdmin={user.role === 'admin'} onLogout={() => api('logout', {}).finally(() => setUser(null))} />;
 }
 
 function Login({ onDone }: { onDone: (u: any) => void }) {
@@ -75,8 +75,8 @@ function Login({ onDone }: { onDone: (u: any) => void }) {
   );
 }
 
-function Panel({ email, onLogout }: { email: string; onLogout: () => void }) {
-  const [sec, setSec] = useState<Section | 'password' | 'leads'>('leads');
+function Panel({ email, isAdmin, onLogout }: { email: string; isAdmin: boolean; onLogout: () => void }) {
+  const [sec, setSec] = useState<Section | 'password' | 'leads' | 'staff' | 'activity'>('leads');
   return (
     <div className="min-h-screen bg-secondary">
       <header className="bg-primary text-primary-foreground px-6 py-3 flex items-center justify-between">
@@ -89,9 +89,11 @@ function Panel({ email, onLogout }: { email: string; onLogout: () => void }) {
             <button key={s.id} onClick={() => setSec(s)} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === s ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>{s.label}</button>
           ))}
           <button onClick={() => setSec('leads')} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === 'leads' ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>Enquiries</button>
+          {isAdmin && <button onClick={() => setSec('staff')} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === 'staff' ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>Staff logins</button>}
+          {isAdmin && <button onClick={() => setSec('activity')} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === 'activity' ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>Activity log</button>}
           <button onClick={() => setSec('password')} className={`text-left px-3 py-2 rounded whitespace-nowrap ${sec === 'password' ? 'bg-primary text-primary-foreground' : 'hover:bg-background'}`}>Change password</button>
         </nav>
-        <main className="flex-1 p-4 md:p-6">{sec === 'password' ? <Password /> : sec === 'leads' ? <Leads /> : <Editor key={sec.id} sec={sec} />}</main>
+        <main className="flex-1 p-4 md:p-6">{sec === 'password' ? <Password /> : sec === 'staff' ? <Staff /> : sec === 'activity' ? <Activity /> : sec === 'leads' ? <Leads /> : <Editor key={sec.id} sec={sec} />}</main>
       </div>
     </div>
   );
@@ -266,6 +268,82 @@ function Leads() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+
+function Staff() {
+  const [rows, setRows] = useState<Row[]>([]); const [edit, setEdit] = useState<Row | null>(null); const [err, setErr] = useState('');
+  const load = () => api('users').then((j) => setRows(j.rows)).catch((x) => setErr(x.message));
+  useEffect(() => { load(); }, []);
+  const save = () => { setErr(''); api('user_save', edit).then(() => { setEdit(null); load(); }).catch((x) => setErr(x.message)); };
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <h2 className="text-2xl font-bold mr-auto">Staff logins</h2>
+        <Button onClick={() => { setErr(''); setEdit({ id: 0, name: '', email: '', role: 'editor', is_active: 1, password: '' }); }}>+ Add staff</Button>
+      </div>
+      <p className="text-sm text-muted-foreground">Admin = can do everything. Editor = can update website content and see enquiries, but cannot manage staff or see the activity log.</p>
+      {err && !edit && <p className="text-sm text-red-600">{err}</p>}
+      <div className="bg-background rounded-xl divide-y">
+        {rows.map((r) => (
+          <button key={r.id} onClick={() => { setErr(''); setEdit({ ...r, password: '' }); }} className="w-full text-left p-4 flex flex-wrap gap-x-6 gap-y-1 hover:bg-secondary">
+            <span className="flex-1 min-w-[8rem] font-medium">{r.name || '—'}</span><span className="text-sm">{r.email}</span>
+            <span className="text-sm capitalize w-16">{r.role}</span>
+            <span className={`text-sm w-20 ${Number(r.is_active) ? 'text-green-700' : 'text-red-600'}`}>{Number(r.is_active) ? 'Active' : 'Disabled'}</span>
+            <span className="text-sm text-muted-foreground">Last login: {r.last_login_at || 'never'}</span>
+          </button>
+        ))}
+      </div>
+      {edit && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-start justify-center overflow-auto p-4" onClick={() => setEdit(null)}>
+          <form className="bg-background rounded-xl p-6 w-full max-w-md my-8 space-y-4" onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); save(); }}>
+            <h3 className="text-lg font-bold">{edit.id ? 'Edit staff' : 'Add staff'}</h3>
+            <div><Label>Full name</Label><Input value={edit.name} onChange={(e) => setEdit({ ...edit, name: e.target.value })} required /></div>
+            <div><Label>Email (used to log in)</Label><Input type="email" value={edit.email} onChange={(e) => setEdit({ ...edit, email: e.target.value })} required /></div>
+            <div><Label>Role</Label>
+              <select className="w-full border rounded px-2 py-2 bg-background" value={edit.role} onChange={(e) => setEdit({ ...edit, role: e.target.value })}>
+                <option value="editor">Editor — content only</option><option value="admin">Admin — everything</option>
+              </select></div>
+            <div><Label>{edit.id ? 'New password (leave empty to keep the same)' : 'Password (min 10 characters)'}</Label><Input type="text" autoComplete="new-password" value={edit.password} onChange={(e) => setEdit({ ...edit, password: e.target.value })} /></div>
+            <label className="flex items-center gap-2"><input type="checkbox" checked={!!Number(edit.is_active)} onChange={(e) => setEdit({ ...edit, is_active: e.target.checked ? 1 : 0 })} /> Can log in (untick to block this person)</label>
+            {err && <p className="text-sm text-red-600">{err}</p>}
+            <div className="flex gap-2 justify-end"><Button type="button" variant="outline" onClick={() => setEdit(null)}>Cancel</Button><Button type="submit">Save</Button></div>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}
+
+const ACTION_TEXT: Record<string, string> = { create: 'Added', update: 'Edited', delete: 'Deleted', login: 'Logged in', logout: 'Logged out', password: 'Changed own password' };
+const RES_TEXT: Record<string, string> = { ...Object.fromEntries(SECTIONS.map((s) => [s.id, s.label])), leads: 'Enquiries', staff: 'Staff logins' };
+
+function Activity() {
+  const [rows, setRows] = useState<Row[]>([]); const [users, setUsers] = useState<Row[]>([]); const [who, setWho] = useState('');
+  useEffect(() => { api('users').then((j) => setUsers(j.rows)); }, []);
+  useEffect(() => { api('activity', undefined, who ? `&user=${who}` : '').then((j) => setRows(j.rows)).catch((x) => alert(x.message)); }, [who]);
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <h2 className="text-2xl font-bold mr-auto">Activity log</h2>
+        <select className="border rounded px-2 py-2 bg-background" value={who} onChange={(e) => setWho(e.target.value)}>
+          <option value="">Everyone</option>{users.map((u) => <option key={u.id} value={u.id}>{u.name || u.email}</option>)}
+        </select>
+      </div>
+      <p className="text-sm text-muted-foreground">Shows the latest 500 actions — who did what, and when.</p>
+      <div className="bg-background rounded-xl divide-y overflow-x-auto">
+        {!rows.length && <p className="p-4 text-muted-foreground">Nothing yet.</p>}
+        {rows.map((r) => (
+          <div key={r.id} className="p-4 flex flex-wrap gap-x-6 gap-y-1 text-sm">
+            <span className="w-40">{r.created_at}</span>
+            <span className="w-40 font-medium">{r.admin_name || r.admin_email}</span>
+            <span className="w-36">{ACTION_TEXT[r.action] ?? r.action}{r.resource ? ` · ${RES_TEXT[r.resource] ?? r.resource}` : ''}</span>
+            <span className="flex-1 min-w-[10rem] break-words">{r.summary}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
